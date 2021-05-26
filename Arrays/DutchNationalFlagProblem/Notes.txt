@@ -1,0 +1,79 @@
+Dutch National Flag Algorithm
+ 
+
+Problem Statement
+
+Given an array consisting of only 0s, 1s and 2s, sort the array.
+
+
+Naive Approach:
+
+Simply sort the array with the help of sorting algorithms like Merge Sort, Quick Sort. This gives a time complexity of O(N*logN), where N is the number of elements in the array.
+
+
+Two-Pass Algorithm:
+
+The solution involves iterating through the original array and counting the number of 0s, 1s, and 2s, and just overwriting the original array in a second pass. The only disadvantage is that we need to traverse the array twice to get a sorted array.
+
+
+Steps:
+
+Traverse the array once and keep track of the count of 0s, 1s and 2s encountered.
+Now traverse the array again and overwrite the array starting from the beginning, first with 0s, then 1s, and finally all 2s.
+
+/*
+	array of size N from 0 to N-1 is considered        
+*/
+function sort012(arr, N)
+	
+	//	Initialize the cnt0, cnt1 and cnt2 variables to 0.
+	cnt0 = 0
+	cnt1 = 0
+	cnt2 = 0
+
+	// 	Count the number of 0s, 1s and 2s
+	for idx = 0 to N-1
+		if arr[idx] == 0
+			cnt0 += 1
+		else if arr[idx] == 1
+			cnt1 += 1
+		else 
+			cnt2 += 1
+
+	// 	Now overwrite the array from the beginning
+	for idx = 0 to N-1
+		if cnt0 > 0
+			arr[idx] = 0
+			cnt0 -= 1
+		else if cnt1 > 0
+			arr[idx] = 1
+			cnt1 -= 1
+		else 
+			arr[idx] = 2
+			cnt2 -= 1
+
+
+//O(N) with 2 passes
+
+
+Dutch National Flag solution
+
+1. There will be 3 pointers:
+low = 0;
+mid = 0;
+high = n-1;
+
+2. We will run a loop from mid to high 
+
+3. Take arr[mid]
+
+if(arr[m]) == 0
+swap a[m] and a[l]
+then mid++, low++
+
+if(arr[m]) == 1
+mid++
+
+if(arr[m] == 2)
+swap a[m] and a[h]
+h--;

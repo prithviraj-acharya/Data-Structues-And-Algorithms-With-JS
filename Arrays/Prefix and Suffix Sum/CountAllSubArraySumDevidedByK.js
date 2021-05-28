@@ -13,7 +13,7 @@ So we return the integer 6.
 
 let CountAllSubArraySumDevidedByK = function (arr, k) {
 
-    //Brute Force.
+    //Brute Force.x`
 
     let totalCount = 0;
 

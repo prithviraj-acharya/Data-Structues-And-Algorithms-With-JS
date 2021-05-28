@@ -12,23 +12,28 @@ If you are given an array {1, 1, 0, 0, 1} then you will have to return the count
 
 let flipBits = function (arr) {
 
-    let contSum = flipNumber(arr[0]);
-    let totalSum = 0;
+    // Idea is to calculate the maxium differnce between number of zeros and number of ones.
+    // In that way we can find which bits to flip and how many
 
-    for (let i = 1; i < arr.length; i++) {
+    // 0 0 1 0 0
 
-        let num = flipNumber(arr[i]);
+    // 1 1 1 0
 
-        contSum = Math.max(num, num + contSum);
-        totalSum = Math.max(contSum, totalSum);
+    let countOne = 0;
+    let currMax = 0;
+    let max = 0;
 
+
+    for (let i = 0; i < arr.length; i++) {
+
+        if (arr[i] === 1) countOne++;
+
+        let num = arr[i] == 1 ? -1 : 1;
+
+        currMax = Math.max(num, num + currMax);
+        max = Math.max(max, currMax);
     }
 
-    return totalSum;
+    return max + countOne;
 
-}
-
-function flipNumber(num) {
-    if (num === 0) return 1
-    return num >> 1;
 }

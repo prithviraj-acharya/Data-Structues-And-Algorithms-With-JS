@@ -12,6 +12,9 @@ b) If no such element is present return -1.
 
 let SecondLargestElementInArray = function (arr) {
 
+    // O(N) - Time. 
+    // O(1) - Space.
+
     let largest = arr[0];
     let secondLargest = -1;
 

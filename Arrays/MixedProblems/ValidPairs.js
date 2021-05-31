@@ -6,37 +6,49 @@ Your task is to return the list of all pairs of elements such that each sum of e
 
 
 
-let PairSum = function (arr, sum) {
+let ValidPairs = function (arr, div, rem) {
 
     let pairArr = [];
 
     for (let i = 0; i < arr.length; i++) {
 
-        pairingIndex = arr.indexOf(sum - arr[i]);
+        pairingIndex = arr.indexOf(arr.find(x => {
+            return (arr[i] + x) % div === rem
+        }));
 
         if (pairingIndex !== -1 && pairingIndex != i) {
-            
+
             pairArr.push([arr[i], arr[pairingIndex]]);
-            
-            arr[i] = Number.MAX_VALUE;
-            arr[pairingIndex] = Number.MAX_VALUE;
+
         }
 
     }
 
+    console.log(pairArr);
 
-    return pairArr;
-
+    return pairArr.length >= arr.length / 2;
 
     // let pairArr = [];
 
+    // if (arr.length % 2 !== 0) return false;
+
     // for (let i = 0; i < arr.length - 1; i++) {
+
     //     for (let j = i + 1; j < arr.length; j++) {
-    //         if (arr[i] + arr[j] === sum) pairArr.push([arr[i], arr[j]])
+
+    //         let sum = arr[i] + arr[j];
+
+    //         if (sum % div === rem) {
+
+    //             pairArr.push([arr[i], arr[j]]);
+    //         }
     //     }
+
     // }
 
-    // return pairArr;
+    // console.log(pairArr);
+
+    // return pairArr.length >= arr.length / 2;
 
 
 }

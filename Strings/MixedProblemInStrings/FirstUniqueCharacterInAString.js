@@ -10,23 +10,20 @@ Hence we return the character ‘c’ present at index 2.
 
 */
 
-
 let firstUniqueChar = function (str) {
+  let stringMap = new Map();
+  let uniqueString = '#';
 
-    let stringMap = new Map();
-    let uniqueString = "#";
+  for (let i = 0; i < str.length; i++) {
+    stringMap.set(str[i], stringMap.get(str[i]) + 1 || 1);
+  }
 
-    for (let i = 0; i < str.length; i++) {
-        stringMap.set(str[i], stringMap.get(str[i]) + 1 || 1);
+  for (let [key, val] of stringMap) {
+    if (val === 1) {
+      uniqueString = key;
+      break;
     }
+  }
 
-    for (let [key, val] of stringMap) {
-
-        if (val === 1) {
-            uniqueString = key;
-            break;
-        }
-    }
-
-    return uniqueString;
-}
+  return uniqueString;
+};

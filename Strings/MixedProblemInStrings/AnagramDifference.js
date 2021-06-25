@@ -27,23 +27,17 @@ So the minimum number of manipulations to make  'STR1' and 'STR2' to anagram str
 
 */
 
-
 let anagram = function (str1, str2) {
+  let numberOfChange = 0;
 
-    let numberOfChange = 0;
+  for (let i = 0; i < str1.length; i++) {
+    let index = str2.indexOf(str1[i]);
 
-    for (let i = 0; i < str1.length; i++) {
+    console.log(str2, index, str1[i]);
 
-        let index = str2.indexOf(str1[i]);
+    if (index != -1) str2 = str2.replace(str1[i], '');
+    else numberOfChange += 1;
+  }
 
-        console.log(str2, index, str1[i]);
-
-        if (index != -1) str2 = str2.replace(str1[i], "");
-        
-        else numberOfChange += 1;
-    }
-
-    return numberOfChange;
-
-
-}
+  return numberOfChange;
+};

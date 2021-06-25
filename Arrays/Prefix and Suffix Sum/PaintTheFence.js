@@ -28,10 +28,6 @@ You are not required to print the expected output; it has already been taken car
 
 */
 
-
 let PaintTheFence = function (arr, k) {
-
-    //Brute Force.
-
-
-}
+  //Brute Force.
+};

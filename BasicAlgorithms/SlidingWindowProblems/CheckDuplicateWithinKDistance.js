@@ -16,42 +16,33 @@
  *
  */
 
-
 let CheckDuplicateWithinKDistance = function (arr, k) {
+  let start = 0;
+  let end = 0;
+  let elementMap = new Map();
 
-    let start = 0;
-    let end = 0;
-    let elementMap = new Map();
+  windowSize = k + 1;
 
-    windowSize = k + 1;
+  while (end < arr.length) {
+    elementMap.set(arr[end], elementMap.get(arr[end]) + 1 || 1);
 
-    while (end < arr.length) {
+    if (end - start + 1 < windowSize) {
+      end++;
+    } else if (end - start + 1 === windowSize) {
+      for (let value of elementMap.values()) {
+        if (value > 1) return true;
+      }
 
-        elementMap.set(arr[end], elementMap.get(arr[end]) + 1 || 1);
+      if (elementMap.get(arr[start]) - 1 === 0) {
+        elementMap.delete(arr[start]);
+      } else {
+        elementMap.set(arr[start], elementMap.get(arr[start]) - 1);
+      }
 
-        if (end - start + 1 < windowSize) {
-            end++;
-        }
-        else if (end - start + 1 === windowSize) {
-
-            for (let value of elementMap.values()) {
-                if (value > 1) return true;
-            }
-
-            if (elementMap.get(arr[start]) - 1 === 0) {
-                elementMap.delete(arr[start]);
-            } else {
-                elementMap.set(arr[start], elementMap.get(arr[start]) - 1);
-            }
-
-
-            start++;
-            end++;
-        }
-
+      start++;
+      end++;
     }
+  }
 
-    return false;
-
-
-}
+  return false;
+};

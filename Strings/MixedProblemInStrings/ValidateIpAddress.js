@@ -20,14 +20,13 @@ False
 */
 
 let validateIpAddress = function (strIp) {
+  let arr = strIp.split('.');
 
-    let arr = strIp.split('.');
+  if (arr.length != 4) return false;
 
-    if (arr.length != 4) return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (!/^[0-9]+$/.test(arr[i]) || arr[i] < 0 || arr[i] > 255) return false;
+  }
 
-    for (let i = 0; i < arr.length; i++) {
-        if (!/^[0-9]+$/.test(arr[i]) || arr[i] < 0 || arr[i] > 255) return false;
-    }
-
-    return true;
-}
+  return true;
+};

@@ -19,37 +19,29 @@ Hence, the final answer is [1,1,0] in this case.
 
 */
 
-
 let CountSmallerOrEqualElements = function (arr1, arr2) {
+  let shortArr = [];
 
-    let shortArr = [];
+  arr2.sort((a, b) => a - b);
 
-    arr2.sort((a, b) => a - b);
+  for (let i = 0; i < arr1.length; i++) {
+    shortArr.push(isFoundByBinarySearch(arr2, arr1[i]));
+  }
 
-
-    for (let i = 0; i < arr1.length; i++) {
-        shortArr.push(isFoundByBinarySearch(arr2, arr1[i]))
-
-    }
-
-    return shortArr;
-
-}
+  return shortArr;
+};
 
 function isFoundByBinarySearch(arr, element) {
+  let low = 0,
+    high = arr.length - 1;
+  let mid;
 
-    let low = 0, high = arr.length - 1;
-    let mid;
+  while (low <= high) {
+    mid = parseInt((low + high) / 2);
 
-    while (low <= high) {
+    if (arr[mid] <= element) low = mid + 1;
+    else high = mid - 1;
+  }
 
-        mid = parseInt((low + high) / 2);
-
-        if (arr[mid] <= element) low = mid + 1;
-        else high = mid - 1;
-
-    }
-
-    return low;
-
+  return low;
 }

@@ -11,19 +11,14 @@ third part of B is greater than the third part of A i.e. 45 < 456, thus string B
 
 */
 
-
 let newerVersion = function (str1, str2) {
+  version1 = str1.split('.');
+  version2 = str2.split('.');
 
-    version1 = str1.split(".");
-    version2 = str2.split(".");
+  for (let i = 0; i < version1.length; i++) {
+    if (version1[i] > version2[i]) return 1;
+    else if (version1[i] < version2[i]) return -1;
+  }
 
-    for (let i = 0; i < version1.length; i++) {
-
-        if (version1[i] > version2[i]) return 1;
-        else if (version1[i] < version2[i]) return -1;
-
-    }
-
-    return 0;
-
-}
+  return 0;
+};

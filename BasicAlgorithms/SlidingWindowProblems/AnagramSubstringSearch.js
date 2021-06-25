@@ -25,49 +25,43 @@ anagram with given ‘PTR’  which are index 0 and 5.
 */
 
 let AnagramSubstringSearch = function (str, ptr) {
+  let start = 0;
+  let end = 0;
+  let count = [];
 
-    let start = 0;
-    let end = 0;
-    let count = [];
+  let strMap = new Map();
+  let ptrMap = new Map();
 
-    let strMap = new Map();
-    let ptrMap = new Map();
+  for (let i = 0; i < ptr.length; i++) {
+    ptrMap.set(ptr[i], ptrMap.get(ptr[i]) + 1 || 1);
+  }
 
-    for (let i = 0; i < ptr.length; i++) {
-        ptrMap.set(ptr[i], ptrMap.get(ptr[i]) + 1 || 1);
+  while (end < str.length) {
+    strMap.set(str[end], strMap.get(str[end]) + 1 || 1);
+
+    if (end - start + 1 < ptr.length) {
+      end++;
+    } else {
+      if (isAnagram(strMap, ptrMap)) count.push(start);
+
+      if (strMap.get(str[start]) - 1 === 0) {
+        strMap.delete(str[start]);
+      } else {
+        strMap.set(str[start], strMap.get(str[start]) - 1);
+      }
+
+      start++;
+      end++;
     }
+  }
 
-    while (end < str.length) {
-        strMap.set(str[end], strMap.get(str[end]) + 1 || 1);
-
-        if (end - start + 1 < ptr.length) {
-            end++;
-        }
-        else {
-
-            if (isAnagram(strMap, ptrMap)) count.push(start);
-
-            if (strMap.get(str[start]) - 1 === 0) {
-                strMap.delete(str[start]);
-            } else {
-                strMap.set(str[start], strMap.get(str[start]) - 1);
-            }
-
-            start++;
-            end++;
-
-        }
-
-    }
-
-    return count;
-}
+  return count;
+};
 
 function isAnagram(strMap, ptrMap) {
+  for (let [key, value] of strMap) {
+    if (ptrMap.get(key) !== value) return false;
+  }
 
-    for (let [key, value] of strMap) {
-        if (ptrMap.get(key) !== value) return false;
-    }
-
-    return true;
+  return true;
 }

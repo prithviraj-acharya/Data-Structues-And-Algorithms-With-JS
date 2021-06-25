@@ -24,9 +24,7 @@
  * 
  */
 
-
 let fruitsAndBasket = function (str) {
-
   //Maximum length of a substring with 2 distict characters
 
   let start = 0;
@@ -37,14 +35,14 @@ let fruitsAndBasket = function (str) {
   maxCountOfFruits = 0;
 
   while (end < str.length) {
-
     fruitMap.set(str[end], fruitMap.get(str[end]) + 1 || 1);
 
     if (fruitMap.size <= 2) {
-      maxCountOfFruits = Math.max(maxCountOfFruits, calculateTotalChars(fruitMap.values()));
-    }
-    else if (fruitMap.size > 2) {
-
+      maxCountOfFruits = Math.max(
+        maxCountOfFruits,
+        calculateTotalChars(fruitMap.values())
+      );
+    } else if (fruitMap.size > 2) {
       while (fruitMap.size > 2) {
         if (fruitMap.get(str[start]) - 1 === 0) {
           fruitMap.delete(str[start]);
@@ -52,15 +50,15 @@ let fruitsAndBasket = function (str) {
           fruitMap.set(str[start], fruitMap.get(str[start]) - 1);
         }
 
-        start++
+        start++;
       }
     }
 
-    end++
+    end++;
   }
 
   return maxCountOfFruits;
+};
 
-}
-
-let calculateTotalChars = (values) => [...values].reduce((acc, curr) => acc += curr, 0)
+let calculateTotalChars = values =>
+  [...values].reduce((acc, curr) => (acc += curr), 0);

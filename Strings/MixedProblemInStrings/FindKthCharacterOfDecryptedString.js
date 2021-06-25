@@ -19,28 +19,19 @@ According to 1-based indexing for S, the 8th character is 'c'.
 */
 
 let findKthCharOfDectrypedString = function (str, k) {
+  let sum = 0;
 
-    let sum = 0;
+  let charStartIndex = 0;
+  let charEndIndex = 0;
 
-    let charStartIndex = 0;
-    let charEndIndex = 0;
+  let numberStartIndex = 0;
+  let numberEndIndex = 0;
 
-    let numberStartIndex = 0;
-    let numberEndIndex = 0;
+  let numberRegex = '/^d+$/';
+  let charRegex = '/^[A-Za-z]+$/';
 
-    let numberRegex = "/^d+$/";
-    let charRegex = "/^[A-Za-z]+$/";
-
-    for (let i = 0; i < str.length; i++) {
-
-        if (str[i].match(numberRegex0)){
-
-            
-
-
-        }
-
-
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].match(numberRegex0)) {
     }
-
-}
+  }
+};

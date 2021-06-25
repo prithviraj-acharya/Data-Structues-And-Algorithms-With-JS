@@ -12,22 +12,20 @@
  */
 
 let longestSwitchingSubArr = function (arr) {
+  if (arr.length < 2) return arr.length;
 
-    if (arr.length < 2) return arr.length;
+  let maxlength = 2;
+  let currLength = 2;
 
-    let maxlength = 2;
-    let currLength = 2;
-
-    for (let i = 2; i < arr.length; i++) {
-        if (arr[i] === arr[i - 2]) {
-            currLength += 1;
-        } else {
-            currLength = 2;
-        }
-
-        maxlength = Math.max(maxlength, currLength);
+  for (let i = 2; i < arr.length; i++) {
+    if (arr[i] === arr[i - 2]) {
+      currLength += 1;
+    } else {
+      currLength = 2;
     }
 
-    return maxlength;
+    maxlength = Math.max(maxlength, currLength);
+  }
 
-}
+  return maxlength;
+};

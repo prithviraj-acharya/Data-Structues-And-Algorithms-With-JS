@@ -5,23 +5,18 @@ Your task is to find the maximum possible sum of any non-empty subarray (contagi
 
 */
 
-
 let MaximumSubArrayAfterKConc = function (arr, k) {
+  // Run a loop from 1 to arr.length * k, and create the val and apply kaden's algo;
 
-    // Run a loop from 1 to arr.length * k, and create the val and apply kaden's algo;
+  let currSum = 0;
+  let maxSum = 0;
 
-    let currSum = 0;
-    let maxSum = 0;
+  for (let i = 0; i < arr.length * k; i++) {
+    let val = arr[i % arr.length];
 
-    for (let i = 0; i < arr.length * k; i++) {
+    currSum = Math.max(val, val + currSum);
+    maxSum = Math.max(maxSum, currSum);
+  }
 
-        let val = arr[i % arr.length];
-
-        currSum = Math.max(val, val + currSum);
-        maxSum = Math.max(maxSum, currSum);
-    }
-
-    return maxSum;
-
-
-}
+  return maxSum;
+};

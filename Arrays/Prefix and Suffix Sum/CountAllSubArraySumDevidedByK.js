@@ -10,33 +10,25 @@ So we return the integer 6.
 
 */
 
-
 let CountAllSubArraySumDevidedByK = function (arr, k) {
+  //Brute Force.x`
 
-    //Brute Force.x`
+  let totalCount = 0;
 
-    let totalCount = 0;
+  for (let [idx, val] of arr.entries()) {
+    if (val % k === 0) totalCount += 1;
 
-    for (let [idx, val] of arr.entries()) {
+    let totalSum = arr[idx];
+    let j = idx + 1;
 
-        if (val % k === 0) totalCount += 1;
+    while (j < arr.length) {
+      totalSum += arr[j];
 
-        let totalSum = arr[idx];
-        let j = idx + 1;
+      if (totalSum % k === 0) totalCount += 1;
 
-        while (j < arr.length) {
-
-            totalSum += arr[j];
-
-            if (totalSum % k === 0) totalCount += 1;
-
-            j++;
-
-        }
-
-
+      j++;
     }
+  }
 
-    return totalCount;
-
-}
+  return totalCount;
+};

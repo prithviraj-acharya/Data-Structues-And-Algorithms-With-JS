@@ -8,19 +8,15 @@ A subarray is a contiguous segment of an array. In other words, a subarray can b
 */
 
 let maxSubArraySum = function (arr) {
+  let contSum = arr[0];
+  let totalSum = 0;
 
-    let contSum = arr[0];
-    let totalSum = 0;
+  for (let i = 1; i < arr.length; i++) {
+    let num = arr[i];
 
-    for (let i = 1; i < arr.length; i++) {
+    contSum = Math.max(num, num + contSum);
+    totalSum = Math.max(contSum, totalSum);
+  }
 
-        let num = arr[i];
-
-        contSum = Math.max(num, num + contSum);
-        totalSum = Math.max(contSum, totalSum);
-
-    }
-
-    return totalSum;
-
-}
+  return totalSum;
+};

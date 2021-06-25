@@ -24,33 +24,26 @@ as it is strictly greater than 1221 and it reads the same from the front and bac
 
 */
 
-
 let smallestPalindrome = function (str) {
+  let flag = false;
+  let number = parseInt(str) + 1;
 
-    let flag = false;
-    let number = parseInt(str) + 1;
-
-    while (!flag) {
-
-        if (isPalindrome(number.toString())) {
-            flag = true;
-            break;
-        }
-
-        number++;
-
+  while (!flag) {
+    if (isPalindrome(number.toString())) {
+      flag = true;
+      break;
     }
 
-    if (flag) return number;
-}
+    number++;
+  }
+
+  if (flag) return number;
+};
 
 function isPalindrome(num) {
+  for (let i = 0; i < parseInt(num.length / 2); i++) {
+    if (num[i] != num[num.length - 1 - i]) return false;
+  }
 
-    for (let i = 0; i < parseInt(num.length / 2); i++) {
-
-        if (num[i] != num[num.length - 1 - i]) return false;
-    }
-
-    return true;
-
+  return true;
 }

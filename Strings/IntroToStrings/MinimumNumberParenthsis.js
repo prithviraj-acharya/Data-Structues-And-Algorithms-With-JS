@@ -15,33 +15,31 @@ Example - ‘(()(()))’, ‘()()()’, ‘((()))’ are valid string, and ‘((
 */
 
 let numberOfParenthesis = function (pattern) {
+  // To store count of "("
+  let openBr = 0;
 
-    // To store count of "("
-    let openBr = 0;
+  // To store count of ")"
+  let closeBr = 0;
 
-    // To store count of ")"
-    let closeBr = 0;
+  // Count of minimum parentheses required
+  let count = 0;
 
-    // Count of minimum parentheses required
-    let count = 0;
-
-    for (let i = 0; i < pattern.length; i++) {
-      
-        if (pattern.charAt(i) == '(') {
-            openBr += 1;
-        } else {
-            closeBr += 1;
-        }
-
-        // If ")" is greater than "("
-        if (closeBr > openBr) {
-            count += (closeBr - openBr);
-            openBr = 0;
-            closeBr = 0;
-        }
+  for (let i = 0; i < pattern.length; i++) {
+    if (pattern.charAt(i) == '(') {
+      openBr += 1;
+    } else {
+      closeBr += 1;
     }
 
-    count += (openBr - closeBr);
+    // If ")" is greater than "("
+    if (closeBr > openBr) {
+      count += closeBr - openBr;
+      openBr = 0;
+      closeBr = 0;
+    }
+  }
 
-    return count;
-}
+  count += openBr - closeBr;
+
+  return count;
+};

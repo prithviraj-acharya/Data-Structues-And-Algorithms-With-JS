@@ -32,36 +32,29 @@ Hence, the count of distinct elements in all K sized windows is { 2, 3, 3, 3, 3}
  */
 
 let countDistictEle = function (arr, k) {
+  let start = 0;
+  let end = 0;
 
-    let start = 0;
-    let end = 0;
+  let elementMap = new Map();
+  let distinctArrForEachWindow = [];
 
-    let elementMap = new Map();
-    let distinctArrForEachWindow = [];
+  while (end < arr.length) {
+    elementMap.set(arr[end], elementMap.get(arr[end]) + 1 || 1);
 
-    while (end < arr.length) {
+    if (end - start + 1 < k) {
+      end++;
+    } else if (end - start + 1 === k) {
+      distinctArrForEachWindow.push(elementMap.size);
 
-        elementMap.set(arr[end], elementMap.get(arr[end]) + 1 || 1);
-
-        if (end - start + 1 < k) {
-            end++;
-        }
-        else if (end - start + 1 === k) {
-
-            distinctArrForEachWindow.push(elementMap.size);
-
-            if (elementMap.get(arr[start]) - 1 === 0) {
-                elementMap.delete(arr[start]);
-            } else {
-                elementMap.set(arr[start], elementMap.get(arr[start]) - 1);
-            }
-            start++;
-            end++;
-        }
-
+      if (elementMap.get(arr[start]) - 1 === 0) {
+        elementMap.delete(arr[start]);
+      } else {
+        elementMap.set(arr[start], elementMap.get(arr[start]) - 1);
+      }
+      start++;
+      end++;
     }
+  }
 
-    return distinctArrForEachWindow;
-
-
-}
+  return distinctArrForEachWindow;
+};

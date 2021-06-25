@@ -20,14 +20,21 @@ CdngNnjs
 
 */
 
-
 let removeVowels = function (str) {
-
-    return str.split('').filter(x =>
-        x !== 'A' && x !== 'a' &&
-        x !== 'E' && x !== 'e' &&
-        x !== 'I' && x !== 'i' &&
-        x !== 'O' && x !== 'o' &&
-        x !== 'U' && x !== 'u').join('');
-
-}
+  return str
+    .split('')
+    .filter(
+      x =>
+        x !== 'A' &&
+        x !== 'a' &&
+        x !== 'E' &&
+        x !== 'e' &&
+        x !== 'I' &&
+        x !== 'i' &&
+        x !== 'O' &&
+        x !== 'o' &&
+        x !== 'U' &&
+        x !== 'u'
+    )
+    .join('');
+};

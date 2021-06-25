@@ -11,55 +11,47 @@
  */
 
 let longestSubString = function (str) {
+  let start = 0;
+  let end = 0;
 
-    let start = 0;
-    let end = 0;
+  let maxLength = 1;
+  let elementMap = new Map();
 
-    let maxLength = 1;
-    let elementMap = new Map();
+  while (end < str.length) {
+    elementMap.set(str[end], elementMap.get(str[end]) + 1 || 1);
 
-    while (end < str.length) {
+    console.log(elementMap, start, end);
+    console.log('window Size: ' + (end - start + 1), elementMap.size);
 
-        elementMap.set(str[end], elementMap.get(str[end]) + 1 || 1);
+    if (elementMap.size === end - start + 1) {
+      // console.log(28, maxLength);
 
-        console.log(elementMap, start, end);
-        console.log("window Size: " + (end - start + 1), elementMap.size)
+      maxLength = Math.max(maxLength, end - start + 1);
 
-        if (elementMap.size === end - start + 1) {
-           // console.log(28, maxLength);
+      end++;
 
-            maxLength = Math.max(maxLength, (end - start + 1));
+      console.log(maxLength, end);
+    } else if (elementMap.size > end - start + 1) {
+      console.log(33, end);
 
-            end++;
+      end++;
+    } else if (elementMap.size < end - start + 1) {
+      console.log('HERE!');
 
-            console.log(maxLength, end);
-
-        } else if (elementMap.size > end - start + 1) {
-            console.log(33, end);
-
-            end++;
-
-        } else if (elementMap.size < end - start + 1) {
-
-            console.log("HERE!")
-
-            while (elementMap.size < end - start + 1) {
-                if (elementMap.get(str[start]) - 1 === 0) {
-                    elementMap.delete(str[start]);
-                } else {
-                    elementMap.set(str[start], elementMap.get(str[start]) - 1);
-                }
-
-                start++;
-            }
-
-            end++;
-
+      while (elementMap.size < end - start + 1) {
+        if (elementMap.get(str[start]) - 1 === 0) {
+          elementMap.delete(str[start]);
+        } else {
+          elementMap.set(str[start], elementMap.get(str[start]) - 1);
         }
 
+        start++;
+      }
+
+      end++;
     }
+  }
 
-    console.log(53, end, str.length);
-    return maxLength;
-
-}
+  console.log(53, end, str.length);
+  return maxLength;
+};

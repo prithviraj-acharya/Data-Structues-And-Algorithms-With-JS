@@ -11,9 +11,10 @@ string to ”I Am A Student Of The Third Year"
 */
 
 let convertFirstWordToAlphabet = function (str) {
+  str = str
+    .split(' ')
+    .map(x => x.replace(x[0], x[0].toUpperCase()))
+    .join(' ');
 
-    str = str.split(' ').map(x => x.replace(x[0], x[0].toUpperCase())).join(" ");
-
-    return str;
-
-}
+  return str;
+};

@@ -41,19 +41,16 @@ qst
 */
 
 let matchSpecificPattern = function (str, pattern) {
+  let patternMap = new Map();
 
-    let patternMap = new Map();
+  for (let i = 0; i < pattern.length; i++) {
+    //  console.log(49, patternMap.get(pattern[i])?.number + 1 || 1);
 
-    for (let i = 0; i < pattern.length; i++) {
+    patternMap.set(pattern[i], {
+      number: patternMap.get(pattern[i])?.number + 1 || 1,
+      position: patternMap.get(pattern[i])?.position.push[i] || [i],
+    });
+  }
 
-        //  console.log(49, patternMap.get(pattern[i])?.number + 1 || 1);
-
-        patternMap.set(pattern[i], {
-            number: patternMap.get(pattern[i])?.number + 1 || 1,
-            position: patternMap.get(pattern[i])?.position.push[i] || [i]
-        })
-    }
-
-    return patternMap;
-
-}
+  return patternMap;
+};

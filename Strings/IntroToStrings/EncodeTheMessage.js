@@ -18,25 +18,21 @@ a1b2d1c1a2s1
 */
 
 let encodeTheMessage = function (str) {
+  let localMaxima = 0;
+  let encodedStr = '';
+  let currAl = str[0];
 
-    let localMaxima = 0;
-    let encodedStr = "";
-    let currAl = str[0];
-
-
-    for (let i = 0; i < str.length; i++) {
-
-        if (str[i] === currAl) {
-            localMaxima += 1;
-        } else {
-            encodedStr += `${currAl}${localMaxima}`;
-            localMaxima = 1;
-            currAl = str[i];
-        }
-
-        if (i === str.length - 1) encodedStr += `${str[i]}${localMaxima}`
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === currAl) {
+      localMaxima += 1;
+    } else {
+      encodedStr += `${currAl}${localMaxima}`;
+      localMaxima = 1;
+      currAl = str[i];
     }
 
-    return encodedStr;
+    if (i === str.length - 1) encodedStr += `${str[i]}${localMaxima}`;
+  }
 
-}
+  return encodedStr;
+};

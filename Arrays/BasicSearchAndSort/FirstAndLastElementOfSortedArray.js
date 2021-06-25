@@ -1,4 +1,3 @@
-
 /*
 You are given a sorted array Arr consisting of N integers and an integer X,
 you need to find the first and last position of occurrence of X in the array.
@@ -9,36 +8,27 @@ you need to find the first and last position of occurrence of X in the array.
 */
 
 let FirstAndLastElementOfSortedArray = function (arr, element) {
+  let firstOcc = getFirstOccurance(arr, element, true);
+  let lastOcc = getFirstOccurance(arr, element, false);
 
-    let firstOcc = getFirstOccurance(arr, element, true);
-    let lastOcc = getFirstOccurance(arr, element, false);
-
-    return firstOcc + " " + lastOcc;
-
-}
+  return firstOcc + ' ' + lastOcc;
+};
 
 function getFirstOccurance(arr, element, left) {
+  let low = 0;
+  let high = arr.length;
+  let res = -1;
 
-    let low = 0;
-    let high = arr.length;
-    let res = -1;
+  while (low <= high) {
+    mid = parseInt((low + high) / 2);
 
-    while (low <= high) {
+    if (arr[mid] === element) {
+      res = mid;
+      if (left) high = mid - 1;
+      else low = mid + 1;
+    } else if (element < arr[mid]) high = mid - 1;
+    else low = mid + 1;
+  }
 
-        mid = parseInt((low + high) / 2);
-
-        if (arr[mid] === element) {
-            res = mid;
-            if (left)
-                high = mid - 1;
-            else
-                low = mid + 1
-        }
-        else if (element < arr[mid]) high = mid - 1;
-
-        else low = mid + 1;
-    }
-
-    return res;
-
+  return res;
 }

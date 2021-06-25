@@ -8,18 +8,16 @@ For example: If the given array A is: [1, 2, 4, 7] and M = 6.
 */
 
 let BestPositionToInsertInSortredArr = function (arr, element) {
+  let low = 0,
+    high = arr.length - 1;
+  let mid;
 
-    let low = 0, high = arr.length - 1;
-    let mid;
+  while (low <= high) {
+    mid = parseInt((low + high) / 2);
 
-    while (low <= high) {
+    if (arr[mid] <= element) low = mid + 1;
+    else high = mid - 1;
+  }
 
-        mid = parseInt((low + high) / 2);
-
-        if (arr[mid] <= element) low = mid + 1;
-        else high = mid - 1;
-
-    }
-
-    return low;
-}
+  return low;
+};

@@ -4,20 +4,16 @@
  * smallest subarray of 'A' containing exactly 'K' distinct integers.
  *
  * If more than one such contiguous subarrays exist, consider the subarray
-   having the smallest leftmost index.
-   For example - if A is [1, 2, 2, 3, 1, 3 ] and k = 2 then the subarrays: [1,2],
-    [2,3], [3,1], [1,3] are the smallest subarrays containing 2 distinct elements.
-In this case, we will consider the starting and ending index of subarray [1,2]
-i.e. 0 and 1
+   having the smallest leftmost index.  For example - if A is [1, 2, 2, 3, 1, 3
+   ] and k = 2 then the subarrays: [1,2], [2,3], [3,1], [1,3] are the smallest
+   subarrays containing 2 distinct elements.  In this case, we will consider the
+   starting and ending index of subarray [1,2] i.e. 0 and 1
  *
-4 3
-1 1 2 1 2
+4 3 1 1 2 1 2
 
 -1
 
-8 3
-4 2 2 2 3 4 4 3
-3 5
+8 3 4 2 2 2 3 4 4 3 3 5
 
  *
  *

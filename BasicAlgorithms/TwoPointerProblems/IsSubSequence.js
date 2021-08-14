@@ -12,16 +12,12 @@
  * strings.
  */
 
-
 let isSubSequence = function (str, seq) {
+  seqIndex = 0;
 
-    seqIndex = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === seq[seqIndex]) seqIndex += 1;
+  }
 
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === seq[seqIndex]) seqIndex += 1;
-    }
-
-
-    return (seqIndex === seq.length);
-
-}
+  return seqIndex === seq.length;
+};

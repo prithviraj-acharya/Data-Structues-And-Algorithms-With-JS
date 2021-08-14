@@ -2,7 +2,8 @@
  * Polyfill of bind function of JS
  */
 Function.prototype.myBind = function (...args) {
-  console.log(args[0]);
+  console.log(5, args[0]);
+  console.log(6, this);
 
   let obj = this;
   let params = args.slice(1);
